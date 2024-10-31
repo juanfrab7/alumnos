@@ -1,0 +1,11 @@
+CREATE DATABASE dbalumnos;
+USE dbalumnos;
+
+CREATE TABLE `alumnos` (
+  `id_alumno` int PRIMARY KEY not null auto_increment,
+  `nombre` varchar(255) not null,
+  `apellido` varchar(255) not null,
+  `telefono` int,
+  `correo` varchar(255),
+  `nota` int
+);
