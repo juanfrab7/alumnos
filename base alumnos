@@ -7,26 +7,51 @@ CREATE TABLE `alumnos` (
   `id_alumno` int PRIMARY KEY not null auto_increment,
   `nombre` varchar(255) not null,
   `apellido` varchar(255) not null,
-  `correo` varchar(255)
+  `correo` varchar(255),
+  `faltas` int
 );
 
 CREATE TABLE `materias` (
   `id_materia` int PRIMARY KEY not null auto_increment,
   `nombre_materia` varchar(255) not null,
-  `inscriptos` varchar(255) not null,
+  `inscriptos` varchar(255),
   `capacidad` int not null
 );
 
-INSERT INTO alumnos(nombre,apellido,correo)
-VALUES
-('Lucia','Dominguez','ldmominguez@escuela.com'),
-('Nicolas','Perez','nperez@escuela.com'),
-('Damian','Garcia','dgarcia@escuela.com'),
-('Roxana','Paez','rpaez@escuela.com'),
-('Manuela','Larroque','mlarroque@escuela.com');
+CREATE TABLE `inscripciones` (
+  `id_inscripcion` int PRIMARY KEY not null auto_increment,
+  `id_alumno` int,
+  `id_materia` int,
+   FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno)
+	ON DELETE SET NULL
+    ON UPDATE CASCADE,
+   FOREIGN KEY (id_materia) REFERENCES materias(id_materia)
+	ON DELETE SET NULL
+    ON UPDATE CASCADE
+);
 
-INSERT INTO materias(nombre_materia,capacidad)
+INSERT INTO alumnos(nombre,apellido,correo,faltas)
 VALUES
-('Biologia',10),
-('Matematica',8),
-('Lengua',5);
+('Lucia','Dominguez','ldmominguez@escuela.com',5),
+('Nicolas','Perez','nperez@escuela.com',4),
+('Damian','Garcia','dgarcia@escuela.com',3),
+('Roxana','Paez','rpaez@escuela.com',2),
+('Manuela','Larroque','mlarroque@escuela.com',9);
+
+INSERT INTO materias(nombre_materia,inscriptos,capacidad)
+VALUES
+('Biologia',null,10),
+('Matematica',null,8),
+('Lengua',null,5);
+
+INSERT INTO inscripciones(id_alumno,id_materia)
+VALUES
+(1,1),
+(1,2),
+(2,1),
+(2,2),
+(3,1),
+(3,2),
+(4,1),
+(4,2),
+(1,3);
