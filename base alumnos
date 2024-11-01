@@ -22,6 +22,7 @@ CREATE TABLE `inscripciones` (
   `id_inscripcion` int PRIMARY KEY not null auto_increment,
   `id_alumno` int,
   `id_materia` int,
+  `nota` int,
    FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno)
 	ON DELETE SET NULL
     ON UPDATE CASCADE,
@@ -44,14 +45,14 @@ VALUES
 ('Matematica',null,8),
 ('Lengua',null,5);
 
-INSERT INTO inscripciones(id_alumno,id_materia)
+INSERT INTO inscripciones(id_alumno,id_materia,nota)
 VALUES
-(1,1),
-(1,2),
-(2,1),
-(2,2),
-(3,1),
-(3,2),
-(4,1),
-(4,2),
-(1,3);
+(1,1,6),
+(1,2,8),
+(2,1,10),
+(2,2,4),
+(3,1,2),
+(3,2,6),
+(4,1,5),
+(4,2,7),
+(1,3,9);
