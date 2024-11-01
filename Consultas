@@ -1,0 +1,4 @@
+SELECT inscripciones.id_inscripcion, inscripciones.id_alumno, alumnos.nombre, alumnos.apellido, materias.nombre_materia
+FROM inscripciones 
+INNER JOIN alumnos ON alumnos.id_alumno = inscripciones.id_alumno
+INNER JOIN materias ON materias.id_materia = inscripciones.id_materia;
