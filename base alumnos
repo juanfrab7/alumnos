@@ -1,4 +1,4 @@
-drop database if exists dbalumnos;
+DROP DATABASE IF EXISTS dbalumnos;
 
 CREATE DATABASE dbalumnos;
 USE dbalumnos;
@@ -22,7 +22,7 @@ CREATE TABLE `inscripciones` (
   `id_inscripcion` int PRIMARY KEY not null auto_increment,
   `id_alumno` int,
   `id_materia` int,
-  `nota` int,
+  `promedio` int,
    FOREIGN KEY (id_alumno) REFERENCES alumnos(id_alumno)
 	ON DELETE SET NULL
     ON UPDATE CASCADE,
@@ -42,10 +42,10 @@ VALUES
 INSERT INTO materias(nombre_materia,inscriptos,capacidad)
 VALUES
 ('Biologia',null,10),
-('Matematica',null,8),
-('Lengua',null,5);
+('Matematica',null,10),
+('Lengua',null,10);
 
-INSERT INTO inscripciones(id_alumno,id_materia,nota)
+INSERT INTO inscripciones(id_alumno,id_materia,promedio)
 VALUES
 (1,1,6),
 (1,2,8),
