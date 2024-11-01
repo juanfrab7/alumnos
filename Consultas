@@ -2,3 +2,7 @@ SELECT inscripciones.id_inscripcion, inscripciones.id_alumno, alumnos.nombre, al
 FROM inscripciones 
 INNER JOIN alumnos ON alumnos.id_alumno = inscripciones.id_alumno
 INNER JOIN materias ON materias.id_materia = inscripciones.id_materia;
+
+Select *,
+IF (faltas>=5,'libre','regular') AS Estado
+FROM alumnos;
