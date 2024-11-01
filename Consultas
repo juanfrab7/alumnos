@@ -6,3 +6,17 @@ INNER JOIN materias ON materias.id_materia = inscripciones.id_materia;
 Select *,
 IF (faltas>=5,'libre','regular') AS Estado
 FROM alumnos;
+
+SELECT inscripciones.id_materia,materias.nombre_materia, count(*) AS anotados, IF (COUNT(*)>=10,'No hay cupo','Hay cupo')
+FROM inscripciones
+INNER JOIN materias ON materias.id_materia = inscripciones.id_materia
+group by inscripciones.id_materia;
+
+SELECT inscripciones.id_inscripcion, inscripciones.id_alumno, inscripciones.id_materia, materias.nombre_materia, inscripciones.promedio,
+CASE 
+	WHEN inscripciones.promedio < 6 THEN 'Reprobó'
+  WHEN inscripciones.promedio < 8 THEN 'Aprobó'
+	WHEN inscripciones.promedio >= 8 THEN 'Promocionó'
+END as Estado
+FROM inscripciones
+INNER JOIN materias ON materias.id_materia = inscripciones.id_materia;
